@@ -1,0 +1,33 @@
+{
+	"objects":[
+			{	
+				"object_name":"Temp Object",
+				"object_name_internal":"temp_object",
+                "root_path": "/root_path",
+                "recursive_search": "true"
+            },
+            {	
+				"name":"onsite",
+				"profile_name":"OnSite",
+				"class_name": "OnsiteLoader",
+				"info": {
+							"company_path" : "/onsite",
+							"file_ext":"/*project_tracker.xlsx",
+						    "mapped_key_types": {
+						        "pmc_name":"object",
+						        "pmc_company_id":"float64",
+						        "rollout_number":"object",
+						        "site_name" :"object",
+						        "osm_site_id" : "object",
+						        "unit_count" : "object",
+						        "product_name" : "object",
+						        "bought" : "object",
+						        "complete" :"object",
+						        "completion_date":"object",
+						        "is_deleted" : "object",
+						        "purchase_date": "object"
+						        }			
+	  					}
+			}
+	]
+}
