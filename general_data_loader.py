@@ -42,24 +42,25 @@ class DataLoaderAbstract(ABC):
             df[col] = df[col].astype(column_type_dict[col])
         return df
 
+    def create_table(self):
+        #check if table exists
+        #if it does exist then truncate
+        try:
+            create_table_query = """
+                    CREATE TABLE {0} (
+                        {1}
+                    );""".format(self.final_collated_table_name,headers_string)
+
+            cur.execute(create_table_query)
+            conn_string.commit()
+        except:
+            pass
+
     def load_csv_to_mssql(self):
         print('\nInserting CSV to MSSQL\n')
         cur = self.conn_string.cursor()
         headers_type_list =['{0} {1}'.format(key, self.default_columns_type[key]) for key in self.default_columns_type]
         headers_string = ",".join(headers_type_list)
-
-        # try:
-        #     create_table_query = """
-        #             CREATE TABLE {0} (
-        #                 {1}
-        #             );""".format(self.final_collated_table_name,headers_string)
-
-        #     cur.execute(create_table_query)
-        #     conn_string.commit()
-        # except:
-        #     pass
-
-
 
         bulk_insert_query = """
             BULK INSERT {0}
